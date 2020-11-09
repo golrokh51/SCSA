@@ -1241,9 +1241,11 @@ class Process(object):
         anno = Annotator(args)
         anno.load_pickle_module(rdbname)
         outs = anno.run_detail_cmd()
-        print("#Cluster","Type","Celltype","Score","Times")
-        for o in outs:
-            print(o)
+        print("#Cluster","Type","Celltype","Score","Times", sep = "\t")
+        #print(str(outs[0]))
+        res = outs[0]
+        for e in range(len(res)): res[e]=str(res[e])
+        print("\t".join(res))
         pass
 
     @staticmethod
